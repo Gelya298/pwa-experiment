@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -52,7 +52,7 @@
       }
     </style>
   </head>
-  <body>
+  <body  class="m4-cloak">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
       <div class="App">
@@ -63,6 +63,7 @@
         Loading site...
       </p>
     </div>
+   </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -89,6 +90,33 @@
       } else {
         console.log('service worker is not supported');
       }
+    </script>
+    <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+    <script src="dialogs.js"></script>
+    <script>
+        $(function(){
+            let testObject = {
+                data:[
+                    ['Petya Ivanovich', 'ivanovich@gmail.com', '2021-02-07', 'Yes', 'pictures1'],
+                    ['Alina Stepanovna', 'stepanovna645@gmail.com', '2021-02-05', 'No', 'pictures2'],
+                    ['Oleg Ulyanich', 'ulyanich55@gmail.com', '2021-02-01', 'Yes', 'pictures3'],
+                ]
+            };
+
+            localStorage.setItem('localData', JSON.stringify(testObject));
+
+            var table = Metro.getPlugin('#table', 'table');
+            table.setData(
+                JSON.parse(
+                    localStorage.getItem('localData')
+                )
+            );
+            
+            table.items = [['Ivan Ivanov', 'ivan103@gmail.com', '2021-02-02', 'Yes', 'pictures4'],['Maria Petrovich', 'm.petrovich123@gmail.com', '2021-02-06', 'No', 'pictures5']];
+            table.draw();
+            
+            
+        })
     </script>
   </body>
 </html>
